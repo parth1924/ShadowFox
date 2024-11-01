@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Challengers Bangalore Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-red-700 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <img src="data:image/jpeg;base64,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" alt="RCB Logo" class="w-16 h-16 rounded-full">
+                <h1 class="text-3xl font-bold italic tracking-wider">Royal Challengers Bangalore</h1>
+            </div>
+            <nav>
+                <ul class="flex space-x-6 text-lg">
+                    <li><a href="#home" class="hover:text-yellow-300 transition duration-300">Home</a></li>
+                    <li><a href="#players" class="hover:text-yellow-300 transition duration-300">Players</a></li>
+                    <li><a href="#results" class="hover:text-yellow-300 transition duration-300">Results</a></li>
+                    <li><a href="#stats" class="hover:text-yellow-300 transition duration-300">Stats</a></li>
+                    <li><a href="#poll" class="hover:text-yellow-300 transition duration-300">Poll</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="home" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">Welcome to RCB Fan Zone</h2>
+            <p class="text-xl">Stay updated with the latest news, player information, and team statistics.</p>
+        </section>
+
+        <section id="players" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">Player Dashboard</h2>
+            <div id="playerGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Player cards will be inserted here -->
+            </div>
+        </section>
+
+        <section id="results" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">Recent Results</h2>
+            <div id="resultsContainer" class="space-y-4">
+                <!-- Results will be inserted here -->
+            </div>
+        </section>
+
+        <section id="stats" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">Team Statistics</h2>
+            <div id="statsContainer" class="space-y-4">
+                <!-- Stats will be inserted here -->
+            </div>
+        </section>
+
+        <section id="poll" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">Fan Poll</h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold mb-4">Who will be the top scorer in the next match?</h3>
+                <form id="pollForm" class="space-y-4">
+                    <div>
+                        <input type="radio" id="player1" name="topScorer" value="Virat Kohli">
+                        <label for="player1" class="ml-2">Virat Kohli</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="player2" name="topScorer" value="Faf du Plessis">
+                        <label for="player2" class="ml-2">Faf du Plessis</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="player3" name="topScorer" value="Glenn Maxwell">
+                        <label for="player3" class="ml-2">Glenn Maxwell</label>
+                    </div>
+                    <button type="submit" class="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300">Vote</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const players = [
+        {
+          "name": "Faf du Plessis",
+          "runsScored": 655,
+          "wicketsTaken": 11,
+          "IPLDebut": "2012",
+          "specialization": "Batsman",
+          "dateOfBirth": "July 13, 1984",
+          "numberOfMatches": 138,
+          "nationality": "South Africa",
+          "link": "https://www.cricbuzz.com/profiles/7825/faf-du-plessis",
+          "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c170639/faf-du-plessis.jpg"
+        },
+        {
+          "name": "Virat Kohli",
+          "runsScored": 7317,
+          "wicketsTaken": 14,
+          "IPLDebut": "2008",
+          "specialization": "Batsman",
+          "dateOfBirth": "November 5, 1988",
+          "numberOfMatches": 265,
+          "nationality": "India",
+          "link": "https://www.cricbuzz.com/profiles/1413/virat-kohli",
+          "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c332891/virat-kohli.jpg"
+        },
+        {
+          "name": "Rajat Patidar",
+          "runsScored": 569,
+          "wicketsTaken": 0,
+          "IPLDebut": "2022",
+          "specialization": "Batsman",
+          "dateOfBirth": "March 25, 1996",
+          "numberOfMatches": 38,
+          "nationality": "India",
+          "link": "https://www.cricbuzz.com/profiles/10636/rajat-patidar",
+          "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c234983/rajat-patidar.jpg"
+        },
+        {
+          "name": "Saurav Chauhan",
+          "runsScored": 26,
+          "wicketsTaken": 0,
+          "IPLDebut": "2023",
+          "specialization": "Batsman",
+          "dateOfBirth": "December 14, 2002",
+          "numberOfMatches": 7,
+          "nationality": "India",
+          "link": "https://www.cricbuzz.com/profiles/21686/saurav-chauhan",
+          "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c174146/saurav-chauhan.jpg"
+        },
+        {
+          "name": "Suyash Prabhudessai",
+          "runsScored": 157,
+          "wicketsTaken": 0,
+          "IPLDebut": "2022",
+          "specialization": "Batsman",
+          "dateOfBirth": "August 15, 1998",
+          "numberOfMatches": 30,
+          "nationality": "India",
+          "link": "https://www.cricbuzz.com/profiles/9184/suyash-prabhudessai",
+          "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c174146/saurav-chauhan.jpg"
+        },
+        {
+          "name": "Cameron Green",
+          "runsScored": 379,
+          "wicketsTaken": 23,
+          "IPLDebut": "2023",
+          "specialization": "All-rounder",
+          "dateOfBirth": "October 22, 2000",
+          "numberOfMatches": 21,
+          "nationality": "Australia",
+          "link": "https://www.cricbuzz.com/profiles/12225/cameron-green",
+          "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c352451/cameron-green.jpg"
+        },
+        {
+          "name": "Anuj Rawat",
+          "runsScored": 427,
+          "wicketsTaken": 0,
+          "IPLDebut": "2021",
+          "specialization": "Wicket-keeper",
+          "dateOfBirth": "October 16, 1997",
+          "numberOfMatches": 58,
+          "nationality": "India",
+          "link": "https://www.cricbuzz.com/profiles/13135/anuj-rawat",
+          "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c226472/anuj-rawat.jpg"
+        },
+        {
+          "name": "Dinesh Karthik",
+          "runsScored": 4622,
+          "wicketsTaken": 108,
+          "IPLDebut": "2008",
+          "specialization": "Wicket-keeper",
+          "dateOfBirth": "June 1, 1985",
+          "numberOfMatches": 262,
+          "nationality": "India",
+          "link": "https://www.cricbuzz.com/profiles/145/dinesh-karthik",
+          "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c244969/dinesh-karthik.jpg"
+        },
+        {
+          "name": "Glenn Maxwell",
+          "runsScored": 2378,
+          "wicketsTaken": 113,
+          "IPLDebut": "2012",
+          "specialization": "All-rounder",
+          "dateOfBirth": "October 14, 1988",
+          "numberOfMatches": 175,
+          "nationality": "Australia",
+          "link": "https://www.cricbuzz.com/profiles/7662/glenn-maxwell",
+          "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c352454/glenn-maxwell.jpg"
+        },
+        {
+          "name": "Mahipal Lomror",
+          "runsScored": 176,
+          "wicketsTaken": 16,
+          "IPLDebut": "2022",
+          "specialization": "All-rounder",
+          "dateOfBirth": "April 22, 1998",
+          "numberOfMatches": 46,
+          "nationality": "India",
+          "link": "https://www.cricbuzz.com/profiles/10954/mahipal-lomror",
+          "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c226541/mahipal-lomror.jpg"
+        },
+        {
+          "name": "Manoj Bhandage",
+          "runsScored": 47,
+          "wicketsTaken": 1,
+          "IPLDebut": "2023",
+          "specialization": "All-rounder",
+          "dateOfBirth": "March 29, 2001",
+          "numberOfMatches": 14,
+          "nationality": "India",
+          "link": "https://www.cricbuzz.com/profiles/9425/manoj-bhandage",
+          "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c174146/saurav-chauhan.jpg"
+        },
+            {
+              "name": "Mayank Dagar",
+              "runsScored": 10,
+              "wicketsTaken": 1,
+              "IPLDebut": "2023",
+              "specialization": "All-rounder",
+              "dateOfBirth": "August 10, 2002",
+              "numberOfMatches": 14,
+              "nationality": "India",
+              "link": "https://www.cricbuzz.com/profiles/9424/mayank-dagar",
+              "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c174146/saurav-chauhan.jpg"
+            },
+            {
+              "name": "Swapnil Singh",
+              "runsScored": 15,
+              "wicketsTaken": 1,
+              "IPLDebut": "2023",
+              "specialization": "All-rounder",
+              "dateOfBirth": "January 11, 2002",
+              "numberOfMatches": 14,
+              "nationality": "India",
+              "link": "https://www.cricbuzz.com/profiles/9423/swapnil-singh",
+              "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c174146/saurav-chauhan.jpg"
+            },
+            {
+              "name": "Tom Curran",
+              "runsScored": 124,
+              "wicketsTaken": 43,
+              "IPLDebut": "2018",
+              "specialization": "All-rounder",
+              "dateOfBirth": "July 29, 1995",
+              "numberOfMatches": 70,
+              "nationality": "England",
+              "link": "https://www.cricbuzz.com/profiles/9522/tom-curran",
+              "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c170967/tom-curran.jpg"
+            },
+            {
+              "name": "Akash Deep",
+              "runsScored": 16,
+              "wicketsTaken": 40,
+              "IPLDebut": "2022",
+              "specialization": "Bowler",
+              "dateOfBirth": "October 21, 1999",
+              "numberOfMatches": 59,
+              "nationality": "India",
+              "link": "https://www.cricbuzz.com/profiles/8597/akash-deep",
+              "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c174146/saurav-chauhan.jpg"
+            },
+            {
+              "name": "Alzarri Joseph",
+              "runsScored": 21,
+              "wicketsTaken": 40,
+              "IPLDebut": "2023",
+              "specialization": "Bowler",
+              "dateOfBirth": "January 11, 1998",
+              "numberOfMatches": 27,
+              "nationality": "Antigua and Barbuda",
+              "link": "https://www.cricbuzz.com/profiles/11220/alzarri-joseph",
+              "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c244661/alzarri-joseph.jpg"
+            },
+            {
+              "name": "Himanshu Sharma",
+              "runsScored": 26,
+              "wicketsTaken": 16,
+              "IPLDebut": "2023",
+              "specialization": "Bowler",
+              "dateOfBirth": "February 28, 2002",
+              "numberOfMatches": 27,
+              "nationality": "India",
+              "link": "https://www.cricbuzz.com/profiles/9422/himanshu-sharma",
+              "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c174146/saurav-chauhan.jpg"
+            },
+            {
+              "name": "Karn Sharma",
+              "runsScored": 40,
+              "wicketsTaken": 70,
+              "IPLDebut": "2013",
+              "specialization": "Bowler",
+              "dateOfBirth": "October 23, 1987",
+              "numberOfMatches": 127,
+              "nationality": "India",
+              "link": "https://www.cricbuzz.com/profiles/1844/karn-sharma",
+              "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c226391/karn-sharma.jpg"
+            },
+            {
+              "name": "Lockie Ferguson",
+              "runsScored": 32,
+              "wicketsTaken": 70,
+              "IPLDebut": "2018",
+              "specialization": "Bowler",
+              "dateOfBirth": "March 14, 1991",
+              "numberOfMatches": 72,
+              "nationality": "New Zealand",
+              "link": "https://www.cricbuzz.com/profiles/10692/lockie-ferguson",
+              "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c351814/lockie-ferguson.jpg"
+            },
+            {
+              "name": "Mohammed Siraj",
+              "runsScored": 13,
+              "wicketsTaken": 113,
+              "IPLDebut": "2018",
+              "specialization": "Bowler",
+              "dateOfBirth": "March 13, 1994",
+              "numberOfMatches": 103,
+              "nationality": "India",
+              "link": "https://www.cricbuzz.com/profiles/10808/mohammed-siraj",
+              "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c352491/mohammed-siraj.jpg"
+            },
+            {
+              "name": "Rajan Kumar",
+              "runsScored": 0,
+              "wicketsTaken": 1,
+              "IPLDebut": "2023",
+              "specialization": "Bowler",
+              "dateOfBirth": "September 10, 2002",
+              "numberOfMatches": 14,
+              "nationality": "India",
+              "link": "https://www.cricbuzz.com/profiles/9421/rajan-kumar",
+              "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c174146/saurav-chauhan.jpg"
+            },
+            {
+              "name": "Vijaykumar Vyshak",
+              "runsScored": 49,
+              "wicketsTaken": 23,
+              "IPLDebut": "2023",
+              "specialization": "Bowler",
+              "dateOfBirth": "December 25, 2000",
+              "numberOfMatches": 27,
+              "nationality": "India",
+              "link": "https://www.cricbuzz.com/profiles/9420/vijaykumar-vyshak",
+              "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c174146/saurav-chauhan.jpg"
+            },
+            {
+                "name": "Yash Dayal",
+                "runsScored": 15,
+                "wicketsTaken": 34,
+                "IPLDebut": "2022",
+                "specialization": "Bowler",
+                "dateOfBirth": "July 6, 2000",
+                "numberOfMatches": 58,
+                "nationality": "India",
+                "link": "https://www.cricbuzz.com/profiles/8596/yash-dayal",
+                "image": "https://static.cricbuzz.com/a/img/v1/75x75/i1/c174146/saurav-chauhan.jpg"
+            }
+        ];
+
+        const results = [
+        {
+            "match_number": "Eliminator",
+            "venue": "Narendra Modi Stadium, Ahmedabad",
+            "date": "MAY, WED 22, 7:30 pm IST",
+            "result": "Rajasthan Royals Won By 4 Wickets (Qualified)",
+            "team_1": {
+                "name": "Rajasthan Royals",
+                "score": "174/6 (19.0 OV)"
+            },
+            "team_2": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "172/8 (20.0 OV)"
+            }
+        },
+        {
+            "match_number": 68,
+            "venue": "M Chinnaswamy Stadium, Bengaluru",
+            "date": "MAY, SAT 18, 7:30 pm IST",
+            "result": "Royal Challengers Bengaluru Won By 27 Runs",
+            "team_1": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "218/5 (20.0 OV)"
+            },
+            "team_2": {
+                "name": "Chennai Super Kings",
+                "score": "191/7 (20.0 OV)"
+            }
+        },
+        {
+            "match_number": 62,
+            "venue": "M Chinnaswamy Stadium, Bengaluru",
+            "date": "MAY, SUN 12, 7:30 pm IST",
+            "result": "Royal Challengers Bengaluru Won By 47 Runs",
+            "team_1": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "187/9 (20.0 OV)"
+            },
+            "team_2": {
+                "name": "Delhi Capitals",
+                "score": "140 (19.1 OV)"
+            }
+        },
+        {
+            "match_number": 58,
+            "venue": "Himachal Pradesh Cricket Association Stadium, Dharamsala",
+            "date": "MAY, THU 9, 7:30 pm IST",
+            "result": "Royal Challengers Bengaluru Won By 60 Runs",
+            "team_1": {
+                "name": "Punjab Kings",
+                "score": "181 (17.0 OV)"
+            },
+            "team_2": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "241/7 (20.0 OV)"
+            }
+        },
+        {
+            "match_number": 52,
+            "venue": "M Chinnaswamy Stadium, Bengaluru",
+            "date": "MAY, SAT 4, 7:30 pm IST",
+            "result": "Royal Challengers Bengaluru Won By 4 Wickets",
+            "team_1": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "152/6 (13.4 OV)"
+            },
+            "team_2": {
+                "name": "Gujarat Titans",
+                "score": "147 (19.3 OV)"
+            }
+        },
+        {
+            "match_number": 45,
+            "venue": "Narendra Modi Stadium, Ahmedabad",
+            "date": "APR, SUN 28, 3:30 pm IST",
+            "result": "Royal Challengers Bengaluru Won By 9 Wickets",
+            "team_1": {
+                "name": "Gujarat Titans",
+                "score": "200/3 (20.0 OV)"
+            },
+            "team_2": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "206/1 (16.0 OV)"
+            }
+        },
+        {
+            "match_number": 41,
+            "venue": "Rajiv Gandhi International Stadium, Hyderabad",
+            "date": "APR, THU 25, 7:30 pm IST",
+            "result": "Royal Challengers Bengaluru Won By 35 Runs",
+            "team_1": {
+                "name": "Sunrisers Hyderabad",
+                "score": "171/8 (20.0 OV)"
+            },
+            "team_2": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "206/7 (20.0 OV)"
+            }
+        },
+        {
+            "match_number": 36,
+            "venue": "Eden Gardens, Kolkata",
+            "date": "APR, SUN 21, 3:30 pm IST",
+            "result": "Kolkata Knight Riders Won By 1 Run",
+            "team_1": {
+                "name": "Kolkata Knight Riders",
+                "score": "222/6 (20.0 OV)"
+            },
+            "team_2": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "221 (20.0 OV)"
+            }
+        },
+        {
+            "match_number": 30,
+            "venue": "M Chinnaswamy Stadium, Bengaluru",
+            "date": "APR, MON 15, 7:30 pm IST",
+            "result": "Sunrisers Hyderabad Won By 25 Runs",
+            "team_1": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "262/7 (20.0 OV)"
+            },
+            "team_2": {
+                "name": "Sunrisers Hyderabad",
+                "score": "287/3 (20.0 OV)"
+            }
+        },
+        {
+            "match_number": 25,
+            "venue": "Wankhede Stadium, Mumbai",
+            "date": "APR, THU 11, 7:30 pm IST",
+            "result": "Mumbai Indians Won By 7 Wickets",
+            "team_1": {
+                "name": "Mumbai Indians",
+                "score": "199/3 (15.3 OV)"
+            },
+            "team_2": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "196/8 (20.0 OV)"
+            }
+        },
+        {
+            "match_number": 19,
+            "venue": "Sawai Mansingh Stadium, Jaipur",
+            "date": "APR, SAT 6, 7:30 pm IST",
+            "result": "Rajasthan Royals Won By 6 Wickets",
+            "team_1": {
+                "name": "Rajasthan Royals",
+                "score": "189/4 (19.1 OV)"
+            },
+            "team_2": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "183/3 (20.0 OV)"
+            }
+        },
+        {
+            "match_number": 15,
+            "venue": "M Chinnaswamy Stadium, Bengaluru",
+            "date": "APR, TUE 2, 7:30 pm IST",
+            "result": "Lucknow Super Giants Won By 28 Runs",
+            "team_1": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "153 (19.4 OV)"
+            },
+            "team_2": {
+                "name": "Lucknow Super Giants",
+                "score": "181/5 (20.0 OV)"
+            }
+        },
+        {
+            "match_number": 10,
+            "venue": "M Chinnaswamy Stadium, Bengaluru",
+            "date": "MAR, FRI 29, 7:30 pm IST",
+            "result": "Kolkata Knight Riders Won By 7 Wickets",
+            "team_1": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "182/6 (20.0 OV)"
+            },
+            "team_2": {
+                "name": "Kolkata Knight Riders",
+                "score": "186/3 (16.5 OV)"
+            }
+        },
+        {
+            "match_number": 6,
+            "venue": "M Chinnaswamy Stadium, Bengaluru",
+            "date": "MAR, MON 25, 7:30 pm IST",
+            "result": "Royal Challengers Bengaluru Won By 4 Wickets",
+            "team_1": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "178/6 (19.2 OV)"
+            },
+            "team_2": {
+                "name": "Punjab Kings",
+                "score": "176/6 (20.0 OV)"
+            }
+        },
+        {
+            "match_number": 1,
+            "venue": "MA Chidambaram Stadium, Chennai",
+            "date": "MAR, FRI 22, 8:00 pm IST",
+            "result": "Chennai Super Kings Won By 6 Wickets",
+            "team_1": {
+                "name": "Chennai Super Kings",
+                "score": "176/4 (18.4 OV)"
+            },
+            "team_2": {
+                "name": "Royal Challengers Bengaluru",
+                "score": "173/6 (20.0 OV)"
+            }
+        }
+        ];
+
+        const stats = [
+        {
+            "year": 2024,
+            "position": 4,
+            "top_scorer": {
+                "name": "Virat Kohli",
+                "runs": 741
+            },
+            "most_wickets": {
+                "name": "Yash Dayal",
+                "wickets": 15
+            }
+        },
+        {
+            "year": 2023,
+            "position": 6,
+            "top_scorer": {
+                "name": "Faf Du Plessis",
+                "runs": 730
+            },
+            "most_wickets": {
+                "name": "Mohammed Siraj",
+                "wickets": 19
+            }
+        },
+        {
+            "year": 2022,
+            "position": 3,
+            "top_scorer": {
+                "name": "Faf Du Plessis",
+                "runs": 468
+            },
+            "most_wickets": {
+                "name": "Wanindu Hasaranga",
+                "wickets": 26
+            }
+        },
+        {
+            "year": 2021,
+            "position": 4,
+            "top_scorer": {
+                "name": "Glenn Maxwell",
+                "runs": 513
+            },
+            "most_wickets": {
+                "name": "Harshal Patel",
+                "wickets": 32
+            }
+        },
+        {
+            "year": 2020,
+            "position": 4,
+            "top_scorer": {
+                "name": "Devdutt Padikkal",
+                "runs": 473
+            },
+            "most_wickets": {
+                "name": "Yuzvendra Chahal",
+                "wickets": 21
+            }
+        },
+        {
+            "year": 2019,
+            "position": 8,
+            "top_scorer": {
+                "name": "Virat Kohli",
+                "runs": 464
+            },
+            "most_wickets": {
+                "name": "Yuzvendra Chahal",
+                "wickets": 18
+            }
+        },
+        {
+            "year": 2018,
+            "position": 6,
+            "top_scorer": {
+                "name": "Virat Kohli",
+                "runs": 530
+            },
+            "most_wickets": {
+                "name": "Umesh Yadav",
+                "wickets": 20
+            }
+        },
+        {
+            "year": 2017,
+            "position": 8,
+            "top_scorer": {
+                "name": "Virat Kohli",
+                "runs": 308
+            },
+            "most_wickets": {
+                "name": "Pawan Negi",
+                "wickets": 16
+            }
+        },
+        {
+            "year": 2016,
+            "position": 2,
+            "top_scorer": {
+                "name": "Virat Kohli",
+                "runs": 973
+            },
+            "most_wickets": {
+                "name": "Yuzvendra Chahal",
+                "wickets": 21
+            }
+        },
+        {
+            "year": 2015,
+            "position": 3,
+            "top_scorer": {
+                "name": "AB de Villiers",
+                "runs": 513
+            },
+            "most_wickets": {
+                "name": "Yuzvendra Chahal",
+                "wickets": 23
+            }
+        },
+        {
+            "year": 2014,
+            "position": 7,
+            "top_scorer": {
+                "name": "AB de Villiers",
+                "runs": 395
+            },
+            "most_wickets": {
+                "name": "Varun Aaron",
+                "wickets": 16
+            }
+        },
+        {
+            "year": 2013,
+            "position": 5,
+            "top_scorer": {
+                "name": "Chris Gayle",
+                "runs": 708
+            },
+            "most_wickets": {
+                "name": "Vinay Kumar",
+                "wickets": 23
+            }
+        },
+        {
+            "year": 2012,
+            "position": 5,
+            "top_scorer": {
+                "name": "Chris Gayle",
+                "runs": 733
+            },
+            "most_wickets": {
+                "name": "Vinay Kumar",
+                "wickets": 19
+            }
+        },
+        {
+            "year": 2011,
+            "position": 2,
+            "top_scorer": {
+                "name": "Chris Gayle",
+                "runs": 608
+            },
+            "most_wickets": {
+                "name": "Sreenath Aravind",
+                "wickets": 21
+            }
+        },
+        {
+            "year": 2010,
+            "position": 3,
+            "top_scorer": {
+                "name": "Jacques Kallis",
+                "runs": 572
+            },
+            "most_wickets": {
+                "name": "Anil Kumble",
+                "wickets": 17
+            }
+        },
+        {
+            "year": 2009,
+            "position": 2,
+            "top_scorer": {
+                "name": "Jacques Kallis",
+                "runs": 361
+            },
+            "most_wickets": {
+                "name": "Anil Kumble",
+                "wickets": 21
+            }
+        },
+        {
+            "year": 2008,
+            "position": 7,
+            "top_scorer": {
+                "name": "Rahul Dravid",
+                "runs": 371
+            },
+            "most_wickets": {
+                "name": "Zaheer Khan",
+                "wickets": 13
+            }
+        }
+        ];
+
+        function createPlayerCard(player) {
+            return `
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="${player.image}" alt="${player.name}" class="w-full h-auto object-cover transform scale-100 -translate-x-1/8">
+                    <div class="p-4">
+                        <h2 class="text-xl font-semibold mb-2">${player.name}</h2>
+                        <p class="text-gray-600 mb-1">Specialization: ${player.specialization}</p>
+                        <p class="text-gray-600 mb-1">Nationality: ${player.nationality}</p>
+                        <p class="text-gray-600 mb-1">IPL Debut: ${player.IPLDebut}</p>
+                        <p class="text-gray-600 mb-1">Matches: ${player.numberOfMatches}</p>
+                        <p class="text-gray-600 mb-1">Runs: ${player.runsScored}</p>
+                        <p class="text-gray-600 mb-1">Wickets: ${player.wicketsTaken}</p>
+                        <a href="${player.link}" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">
+                            View Profile
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function createResultCard(result) {
+            return `
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-2">${result.match_number}</h3>
+                    <p class="text-gray-600 mb-1">Venue: ${result.venue}</p>
+                    <p class="text-gray-600 mb-1">Date: ${result.date}</p>
+                    <p class="text-gray-600 mb-2">Result: ${result.result}</p>
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="font-semibold">${result.team_1.name}</p>
+                            <p>${result.team_1.score}</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">${result.team_2.name}</p>
+                            <p>${result.team_2.score}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function createStatCard(stat) {
+            return `
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-2">Season ${stat.year} Statistics</h3>
+                    <p class="text-gray-600 mb-1">Final Position: ${stat.position}</p>
+                    <p class="text-gray-600 mb-1">Top Scorer: ${stat.top_scorer.name} (${stat.top_scorer.runs} runs)</p>
+                    <p class="text-gray-600 mb-1">Most Wickets: ${stat.most_wickets.name} (${stat.most_wickets.wickets} wickets)</p>
+                </div>
+            `;
+        }
+
+        function renderPlayerCards() {
+            const playerGrid = document.getElementById('playerGrid');
+            players.forEach(player => {
+                const playerCard = createPlayerCard(player);
+                playerGrid.innerHTML += playerCard;
+            });
+        }
+
+        function renderResults() {
+            const resultsContainer = document.getElementById('resultsContainer');
+            results.forEach(result => {
+                const resultCard = createResultCard(result);
+                resultsContainer.innerHTML += resultCard;
+            });
+        }
+
+        function renderStats() {
+            const statsContainer = document.getElementById('statsContainer');
+            stats.forEach(stat => {
+                const statCard = createStatCard(stat);
+                statsContainer.innerHTML += statCard;
+            });
+        }
+
+        renderPlayerCards();
+        renderResults();
+        renderStats();
+
+        // Handle poll form submission
+        document.getElementById('pollForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const selectedPlayer = document.querySelector('input[name="topScorer"]:checked');
+            if (selectedPlayer) {
+                alert(`You voted for ${selectedPlayer.value} as the top scorer!`);
+            } else {
+                alert('Please select a player before voting!');
+            }
+        });
+    </script>
+</body>
+</html>
